@@ -2,3 +2,4 @@
 data/processed/
 data/raw/
 *.pyc
+PMTL/multi_mnist.pickle

@@ -1,11 +1,13 @@
 import numpy as np
 import torch
+import gdown
 import pickle
 import os
 from torch.autograd import Variable
 from utils import circle_points, get_d_paretomtl_init, get_d_paretomtl
 from model_lenet import RegressionModel, RegressionTrain
 from model_resnet import MnistResNet, RegressionTrainResNet
+
 def train(dataset, base_model, niter, npref, init_weight, pref_idx):
 
     # generate #npref preference vectors      
@@ -16,7 +18,7 @@ def train(dataset, base_model, niter, npref, init_weight, pref_idx):
 
     # MultiMNIST: multi_mnist.pickle
     if dataset == 'mnist':
-        with open('MTL_dataset/multi_mnist.pickle','rb') as f:
+        with open(output,'rb') as f:
             trainX, trainLabel,testX, testLabel = pickle.load(f)  
 
     trainX = torch.from_numpy(trainX.reshape(120000,1,36,36)).float()
@@ -257,5 +259,13 @@ def run(dataset = 'mnist',base_model = 'lenet', niter = 100, npref = 5):
         pref_idx = i 
         train(dataset, base_model, niter, npref, init_weight, pref_idx)
 if __name__ == '__main__':
+    file_id = '1b4ZjhHC8zSeAjlsaCOu1j6ZMC7G3V9dU'
+    url = f'https://drive.google.com/uc?id={file_id}'
+    output = 'multi_mnist.pickle'
+    if not os.path.exists(output):
+        print("Downloading dataset...")
+        gdown.download(url, output, quiet=False)
+    else:
+        print(f"Dataset already exists at '{output}', skipping download.")
     run(dataset = 'mnist', base_model = 'lenet', niter = 100, npref = 5)
     # run(dataset = 'mnist', base_model = 'resnet18', niter = 20, npref = 5)
