@@ -11,8 +11,7 @@ import matplotlib.pyplot as plt
 from typing import Iterable, Union
 _params_t = Union[Iterable[Tensor], Iterable[dict]]
 
-from data.MGDA_dataLoaders_utils import MGDA_Data
-from data.MGDA_dataLoaders_utils import MultiMnist_dataset
+from data.MGDA_dataLoaders_utils import MGDA_Data, MultiMnist_dataset
 
 #######################################
 #####  Helper functions for MGDA #####

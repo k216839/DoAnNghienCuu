@@ -1,6 +1,6 @@
 **/__pycache__/
-data/processed/
-data/raw/
+**/data/processed
+**/data/raw
 *.pyc
 PMTL/multi_mnist.pickle
 PMTL_pytorch_lightning/multi_mnist.pickle
