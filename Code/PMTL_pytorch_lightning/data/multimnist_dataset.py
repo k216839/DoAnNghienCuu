@@ -1,7 +1,8 @@
 import pickle
 from sklearn.model_selection import train_test_split
 import torch
-from PIL import Image 
+from PIL import Image
+import numpy as np
 
 class MNIST(torch.utils.data.Dataset):
     def __init__(self, file_path, mode: str, transform=None):

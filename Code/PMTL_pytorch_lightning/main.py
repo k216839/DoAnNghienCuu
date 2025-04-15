@@ -1,5 +1,6 @@
 import torch
 from torch.autograd import Variable
+import numpy as np
 import pytorch_lightning as pl
 from utils import circle_points, get_d_paretomtl_init
 from data.load_data import load_data
