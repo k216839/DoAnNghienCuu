@@ -5,8 +5,8 @@ import pickle
 import os
 from torch.autograd import Variable
 from utils import circle_points, get_d_paretomtl_init, get_d_paretomtl
-from model_lenet import RegressionModel, RegressionTrain
-from model_resnet import MnistResNet, RegressionTrainResNet
+from model.lenet import RegressionModel, RegressionTrain
+from model.resnet import MnistResNet, RegressionTrainResNet
 
 def train(dataset, base_model, niter, npref, init_weight, pref_idx):
 

@@ -1,11 +1,22 @@
 import pickle
 import torch
+import os
+import gdown
 import numpy as np 
 import matplotlib.pyplot as plt
-from model_lenet import RegressionModel, RegressionTrain
+from model.lenet import RegressionModel, RegressionTrain
 
 # Data
-with open('MTL_dataset/multi_mnist.pickle','rb') as f:
+file_id = '1b4ZjhHC8zSeAjlsaCOu1j6ZMC7G3V9dU'
+url = f'https://drive.google.com/uc?id={file_id}'
+output = 'multi_mnist.pickle'
+if not os.path.exists(output):
+    print("Downloading dataset...")
+    gdown.download(url, output, quiet=False)
+else:
+    print(f"Dataset already exists at '{output}', skipping download.")
+
+with open('multi_mnist.pickle','rb') as f:
     trainX, trainLabel,testX, testLabel = pickle.load(f)  
 
 trainX = torch.from_numpy(trainX.reshape(120000,1,36,36)).float()
