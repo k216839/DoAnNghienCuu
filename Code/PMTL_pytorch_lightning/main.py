@@ -99,6 +99,6 @@ if __name__ == '__main__':
             npref=5, pref_idx=1)
     trainer = pl.Trainer(
             accelerator='gpu',
-            max_epochs=2)
+            max_epochs=100)
     
     trainer.fit(model, data)
