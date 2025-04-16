@@ -207,11 +207,19 @@ def Train_Test_PFstudy(ws, train_loader, val_loader, test_loader, params,
     PS_idx_a = eps_dominance(Pareto_front_loss, epsilon, start = 1)
     print(f"{len(PS_idx_a)} Pareto Optimal Points obtained (epsilon = {epsilon}) !")
 
-    ind_newbest_w = np.argmax(np.array([tens.mean().item() for tens in load_dec_test_accu])[PS_idx_a])
+    # ind_newbest_w = np.argmax(np.array([tens.mean().item() for tens in load_dec_test_accu])[PS_idx_a])
+    # newBestw_dec_trMetrics= (np.array(load_dec_tr_metrics)[PS_idx_a]).tolist()[ind_newbest_w]
+    # newBestw_test_accu= (np.array(load_dec_test_accu)[PS_idx_a]).tolist()[ind_newbest_w]
+    # newBest_w = (np.array(ws)[PS_idx_a]).tolist()[ind_newbest_w]
 
-    newBestw_dec_trMetrics= (np.array(load_dec_tr_metrics)[PS_idx_a]).tolist()[ind_newbest_w]
-    newBestw_test_accu= (np.array(load_dec_test_accu)[PS_idx_a]).tolist()[ind_newbest_w]
-    newBest_w = (np.array(ws)[PS_idx_a]).tolist()[ind_newbest_w]
+    filtered_tr_metrics = [load_dec_tr_metrics[i] for i in PS_idx_a]
+    filtered_test_accu = [load_dec_test_accu[i] for i in PS_idx_a]
+    filtered_ws = [load_ws[i] for i in PS_idx_a]
+
+    ind_newbest_w = np.argmax([acc.mean().item() for acc in filtered_test_accu])
+    newBestw_dec_trMetrics = filtered_tr_metrics[ind_newbest_w]
+    newBestw_test_accu = filtered_test_accu[ind_newbest_w]
+    newBest_w = filtered_ws[ind_newbest_w]
 
     print("Best k: ", newBest_w)
     print("Test Accuracy = ", newBestw_test_accu.mean().item())
