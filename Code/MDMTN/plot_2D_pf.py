@@ -74,6 +74,7 @@ plt.subplots_adjust(wspace=0.3)
 plt.savefig(f'Images/TwoDParetoFrontStudy_{archi_name}_k0is_{str(k0)}..png', dpi=300)
 
 # Show the plot
+plt.tight_layout()
 plt.show()
                 
 print("Pareto Front Study Completed !")

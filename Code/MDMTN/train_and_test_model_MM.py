@@ -22,17 +22,16 @@ def load_MultiMnist_data():
     train_loader, val_loader, test_loader = MultiMnist_loaders(data_path, split_rate, transformers, batch_size)
     print("Data loaded!")
 
-    print("Show sample image...")
-    # Get the first batch from the train loader
-    train_dataiter = iter(train_loader)
-    images, targets = next(train_dataiter)
-    img = images[0]
-    plt.figure(figsize=(5, 5))
-    img = np.transpose(img, (1, 2, 0))
-    plt.imshow(img)
-    plt.title(f"({targets[0][0].item()}, {targets[1][0].item()})")
-    plt.axis('off')
-    plt.show()
+    # print("Show sample image...")
+    # train_dataiter = iter(train_loader)
+    # images, targets = next(train_dataiter)
+    # img = images[0]
+    # plt.figure(figsize=(5, 5))
+    # img = np.transpose(img, (1, 2, 0))
+    # plt.imshow(img)
+    # plt.title(f"({targets[0][0].item()}, {targets[1][0].item()})")
+    # plt.axis('off')
+    # plt.show()
 
     return train_loader, val_loader, test_loader
 

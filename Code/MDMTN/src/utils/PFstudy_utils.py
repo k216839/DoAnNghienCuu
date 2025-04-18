@@ -261,6 +261,7 @@ def Train_Test_PFstudy(ws, train_loader, val_loader, test_loader, params,
     plt.savefig(f'Images/TwoDParetoFrontStudy_{archi_name}_k0is_{str(Best_w[0])}..png', dpi=300)
 
     # Show the plot
+    plt.tight_layout()
     plt.show()
                     
     print("Pareto Front Study Completed !")
