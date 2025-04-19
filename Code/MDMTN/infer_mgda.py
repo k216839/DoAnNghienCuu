@@ -11,7 +11,7 @@ print("Using device:", device)
 
 model, Multimnist_params_mgda = get_params_mgda(archi_name.lower(), model_dir_path, device)
 
-model.load_model(model_dir_path + "/11-04-2025--18-14-52/model_9")
+model.load_model(model_dir_path + "/19-04-2025--16-59-02/model_9")
 print("Model loaded!")
 
 model.to(device)
