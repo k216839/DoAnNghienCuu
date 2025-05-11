@@ -30,7 +30,6 @@ model.to(device)
 model.eval()
 
 # ----- Load dữ liệu inference -----
-# Giả sử bạn có hàm load_multimnist_data hoặc tự tạo một tensor hình ảnh
 _, _, test_loader = load_MultiMnist_data()
 
 # ----- Inference -----
@@ -55,8 +54,8 @@ for i, ax in enumerate(axes.flat):
 
     gt_label = f"{target[i][0].item()} {target[i][1].item()}"
     pred_label = f"{output1[i].item()} {output2[i].item()}"
-    ax.set_title(f"GT: {gt_label} | Pred: {pred_label}")
-
-plt.tight_layout()
+    # ax.set_title(f"GT: {gt_label} | Pred: {pred_label}")
+    ax.set_title(f"GT: {gt_label} | Pred: {pred_label}", fontsize=16)
+# plt.tight_layout()
 plt.show()
 
